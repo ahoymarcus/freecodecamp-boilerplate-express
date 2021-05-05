@@ -1,19 +1,20 @@
 var express = require('express');
-var body-parser = require('body-parser');
+var bodyParser = require('body-parser');
 
 var app = express();
 
 
+
 app.use('/public', express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded( {extended: false} ));
 
 const absolutePath = __dirname + '/views/index.html';
 
 
-
 app.get("/", function(req, res) {
+  
   res.sendFile(absolutePath);
 });
-
 
 
 app.use(function(req, res, next) {
@@ -53,7 +54,12 @@ app.get('/name', function(req, res) {
 	
 	res.json( {name: first + ' ' + last} );
 });
-
+app.post('/name', function(req, res) {
+	let first = req.body.first;
+	let last = req.body.last;
+	
+	res.json( {name: first + ' ' + last} );
+});
 
 
 
