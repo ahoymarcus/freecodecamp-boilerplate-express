@@ -1,4 +1,6 @@
 var express = require('express');
+var body-parser = require('body-parser');
+
 var app = express();
 
 
@@ -49,7 +51,7 @@ app.get('/name', function(req, res) {
 	let first = req.query.first;
 	let last = req.query.last;
 	
-	res.json( {name: first + last} );
+	res.json( {name: first + ' ' + last} );
 });
 
 
