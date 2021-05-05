@@ -38,9 +38,19 @@ app.get('/now', function(req, res, next) {
 });
 
 
+app.get('/:word/echo', function(req, res) {
+	let word = req.params.word;
+	
+	res.json( {echo: word} );
+});
 
 
-
+app.get('/name', function(req, res) {
+	let first = req.query.first;
+	let last = req.query.last;
+	
+	res.json( {name: first + last} );
+});
 
 
 
